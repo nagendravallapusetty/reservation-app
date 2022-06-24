@@ -1,5 +1,5 @@
 # reservation-app
-Build Process
+Build project
 1. From the terminal, go to the root of this project (reservation-app)
 2. Perform a Maven clean install to build the project
 
@@ -23,3 +23,13 @@ Customer
 3. Track ticket status
 4. View all tickets
 5. Logout
+
+
+Tips
+1. Select Location while booking seat/registering bus
+    1. Type some word "hyd", lists down all available locations
+    2. Select any location from the list using sequence number 1,2 ..etc.
+
+2. Login
+    1. Login as a cutomer by typing "customer"
+    2. Login as an admin by typing "admin"
