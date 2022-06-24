@@ -1,7 +1,8 @@
 package reservation.controller.location;
 
 import reservation.model.location.Location;
-import reservation.service.location.LocationService;
+import reservation.service.location.LocationApi;
+import reservation.service.location.LocationApiService;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,10 +11,10 @@ public class LocationController {
 
 
     private volatile static LocationController locationController;
-    private final LocationService locationService;
+    private final LocationApi locationService;
 
     private LocationController() {
-        locationService = LocationService.getInstance();
+        locationService = LocationApiService.getInstance();
     }
 
     public static LocationController getInstance() {

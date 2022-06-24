@@ -1,4 +1,4 @@
-package reservation.view;
+package reservation.view.thread;
 
 import reservation.controller.customer.CustomerController;
 import reservation.model.schedule.Schedule;

@@ -5,6 +5,7 @@ import reservation.model.schedule.Schedule;
 import reservation.model.schedule.ScheduledSeat;
 import reservation.model.ticket.Ticket;
 import reservation.model.user.User;
+import reservation.service.customer.Customer;
 import reservation.service.customer.CustomerService;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ import java.util.Optional;
 public class CustomerController {
 
     private volatile static CustomerController customerController;
-    private final CustomerService customerService;
+    private final Customer customerService;
 
     private CustomerController() {
         customerService = CustomerService.getInstance();

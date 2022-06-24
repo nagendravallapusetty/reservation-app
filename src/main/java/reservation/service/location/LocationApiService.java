@@ -1,4 +1,5 @@
 package reservation.service.location;
+
 import reservation.model.location.Location;
 import reservation.service.data.TestData;
 
@@ -6,20 +7,20 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class LocationService {
+public class LocationApiService implements LocationApi {
 
-    private volatile static LocationService locationService;
+    private volatile static LocationApiService locationService;
 
-    private LocationService() {
+    private LocationApiService() {
 
     }
 
-    public static LocationService getInstance() {
+    public static LocationApiService getInstance() {
 
         if (locationService == null) {
-            synchronized (LocationService.class) {
+            synchronized (LocationApiService.class) {
                 if (locationService == null) {
-                    locationService = new LocationService();
+                    locationService = new LocationApiService();
                 }
             }
         }

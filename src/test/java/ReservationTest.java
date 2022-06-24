@@ -2,7 +2,7 @@ import static org.junit.Assert.assertEquals;
 import reservation.model.schedule.Schedule;
 import reservation.model.schedule.ScheduledSeat;
 import reservation.service.data.TestData;
-import reservation.view.Reservation;
+import reservation.view.thread.Reservation;
 
 import java.util.Optional;
 
