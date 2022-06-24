@@ -18,7 +18,7 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 
-public class TestData implements Ids {
+public class TestData{
 
     private static List<Schedule> allSchedules;
     private static Map<String, Bus> allBuses;
@@ -33,27 +33,27 @@ public class TestData implements Ids {
         user1.setRoles(Arrays.asList("customer"));
         User user2 = new User(67814, "Fred");
         user2.setRoles(Arrays.asList("admin"));
-        allUsers.put(customerId, user1);
-        allUsers.put(adminId, user2);
+        allUsers.put(Ids.customerId, user1);
+        allUsers.put(Ids.adminId, user2);
 
-        Bus superLuxury = new SuperLuxury(superLuxuryId, superLuxuryBusNumber);
-        Bus deluxe = new DeluxeBus(deluxeId, deluxeNumber);
+        Bus superLuxury = new SuperLuxury(Ids.superLuxuryId, Ids.superLuxuryBusNumber);
+        Bus deluxe = new DeluxeBus(Ids.deluxeId, Ids.deluxeNumber);
         allBuses = new HashMap<>();
-        allBuses.put(superLuxuryBusNumber, superLuxury);
-        allBuses.put(deluxeNumber, deluxe);
+        allBuses.put(Ids.superLuxuryBusNumber, superLuxury);
+        allBuses.put(Ids.deluxeNumber, deluxe);
 
         //Each bus is having many seats
-        Seat superLuxurySeat1 = new Seat(superLuxurySeatId1, "TS-1", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat2 = new Seat(superLuxurySeatId2, "TS-2", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat3 = new Seat(superLuxurySeatId2, "TS-3", Seat.Type.SINGLE, superLuxury);
-        Seat superLuxurySeat4 = new Seat(superLuxurySeatId2, "TS-4", Seat.Type.SINGLE, superLuxury);
-        Seat superLuxurySeat5 = new Seat(superLuxurySeatId2, "TS-5", Seat.Type.SINGLE, superLuxury);
-        Seat superLuxurySeat6 = new Seat(superLuxurySeatId2, "TS-6", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat7 = new Seat(superLuxurySeatId2, "TS-7", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat8 = new Seat(superLuxurySeatId2, "TS-8", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat9 = new Seat(superLuxurySeatId2, "TS-9", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat10 = new Seat(superLuxurySeatId2, "TS-10", Seat.Type.SLEEPER, superLuxury);
-        Seat superLuxurySeat11 = new Seat(superLuxurySeatId2, "TS-11", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat1 = new Seat(Ids.superLuxurySeatId1, "TS-1", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat2 = new Seat(Ids.superLuxurySeatId2, "TS-2", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat3 = new Seat(Ids.superLuxurySeatId2, "TS-3", Seat.Type.SINGLE, superLuxury);
+        Seat superLuxurySeat4 = new Seat(Ids.superLuxurySeatId2, "TS-4", Seat.Type.SINGLE, superLuxury);
+        Seat superLuxurySeat5 = new Seat(Ids.superLuxurySeatId2, "TS-5", Seat.Type.SINGLE, superLuxury);
+        Seat superLuxurySeat6 = new Seat(Ids.superLuxurySeatId2, "TS-6", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat7 = new Seat(Ids.superLuxurySeatId2, "TS-7", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat8 = new Seat(Ids.superLuxurySeatId2, "TS-8", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat9 = new Seat(Ids.superLuxurySeatId2, "TS-9", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat10 = new Seat(Ids.superLuxurySeatId2, "TS-10", Seat.Type.SLEEPER, superLuxury);
+        Seat superLuxurySeat11 = new Seat(Ids.superLuxurySeatId2, "TS-11", Seat.Type.SLEEPER, superLuxury);
 
         superLuxury.addSeat(superLuxurySeat1);
         superLuxury.addSeat(superLuxurySeat2);
@@ -68,17 +68,17 @@ public class TestData implements Ids {
         superLuxury.addSeat(superLuxurySeat11);
 
 
-        Seat deluxeSeat1 = new Seat(deluxeSeatId1, "MH-1", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat2 = new Seat(deluxeSeatId2, "MH-2", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat3 = new Seat(deluxeSeatId2, "MH-3", Seat.Type.SINGLE, deluxe);
-        Seat deluxeSeat4 = new Seat(deluxeSeatId2, "MH-4", Seat.Type.SINGLE, deluxe);
-        Seat deluxeSeat5 = new Seat(deluxeSeatId2, "MH-5", Seat.Type.SINGLE, deluxe);
-        Seat deluxeSeat6 = new Seat(deluxeSeatId2, "MH-6", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat7 = new Seat(deluxeSeatId2, "MH-7", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat8 = new Seat(deluxeSeatId2, "MH-8", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat9 = new Seat(deluxeSeatId2, "MH-9", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat10 = new Seat(deluxeSeatId2, "MH-10", Seat.Type.SLEEPER, deluxe);
-        Seat deluxeSeat11 = new Seat(deluxeSeatId2, "MH-11", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat1 = new Seat(Ids.deluxeSeatId1, "MH-1", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat2 = new Seat(Ids.deluxeSeatId2, "MH-2", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat3 = new Seat(Ids.deluxeSeatId2, "MH-3", Seat.Type.SINGLE, deluxe);
+        Seat deluxeSeat4 = new Seat(Ids.deluxeSeatId2, "MH-4", Seat.Type.SINGLE, deluxe);
+        Seat deluxeSeat5 = new Seat(Ids.deluxeSeatId2, "MH-5", Seat.Type.SINGLE, deluxe);
+        Seat deluxeSeat6 = new Seat(Ids.deluxeSeatId2, "MH-6", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat7 = new Seat(Ids.deluxeSeatId2, "MH-7", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat8 = new Seat(Ids.deluxeSeatId2, "MH-8", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat9 = new Seat(Ids.deluxeSeatId2, "MH-9", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat10 = new Seat(Ids.deluxeSeatId2, "MH-10", Seat.Type.SLEEPER, deluxe);
+        Seat deluxeSeat11 = new Seat(Ids.deluxeSeatId2, "MH-11", Seat.Type.SLEEPER, deluxe);
 
         deluxe.addSeat(deluxeSeat1);
         deluxe.addSeat(deluxeSeat2);
@@ -92,15 +92,15 @@ public class TestData implements Ids {
         deluxe.addSeat(deluxeSeat10);
         deluxe.addSeat(deluxeSeat11);
 
-        Location hyderabad = new Location(hydLocationId, "Hyderabad");
-        Location pune = new Location(puneLocationId, "Pune");
+        Location hyderabad = new Location(Ids.hydLocationId, "Hyderabad");
+        Location pune = new Location(Ids.puneLocationId, "Pune");
         allLocations = new ArrayList<>();
         allLocations.add(hyderabad);
         allLocations.add(pune);
-        allLocations.add(new Location(haryanaLocationId, "Haryana"));
-        allLocations.add(new Location(himachalPradeshLocationId, "Himachal Pradesh"));
-        allLocations.add(new Location(punjabLocationId, "Punjab"));
-        allLocations.add(new Location(puducherryLocationId, "Puducherry"));
+        allLocations.add(new Location(Ids.haryanaLocationId, "Haryana"));
+        allLocations.add(new Location(Ids.himachalPradeshLocationId, "Himachal Pradesh"));
+        allLocations.add(new Location(Ids.punjabLocationId, "Punjab"));
+        allLocations.add(new Location(Ids.puducherryLocationId, "Puducherry"));
 
 
         LocalDate localDate = LocalDate.now();
@@ -109,7 +109,7 @@ public class TestData implements Ids {
 
         //each bus is having many schedules
 
-        Schedule superLuxuryHydToPuneSchedule1 = new Schedule(superLuxuryHydToPuneScheduleId1, localDate.plus(1, ChronoUnit.DAYS),
+        Schedule superLuxuryHydToPuneSchedule1 = new Schedule(Ids.superLuxuryHydToPuneScheduleId1, localDate.plus(1, ChronoUnit.DAYS),
                 hyderabad, pune, localTime.plus(1, ChronoUnit.HOURS), superLuxury);
         //every time we add a schedule record, it populates ScheduledSeat table m2m
         List<ScheduledSeat> superLuxurySchedule1HydToPuneSeats = new ArrayList<>();
@@ -130,7 +130,7 @@ public class TestData implements Ids {
         superLuxury.addSchedule(superLuxuryHydToPuneSchedule1);
 
 
-        Schedule superLuxuryPuneToHydSchedule2 = new Schedule(superLuxuryPunToHydScheduleId2, localDate.plus(1, ChronoUnit.DAYS),
+        Schedule superLuxuryPuneToHydSchedule2 = new Schedule(Ids.superLuxuryPunToHydScheduleId2, localDate.plus(1, ChronoUnit.DAYS),
                 pune, hyderabad, localTime.plus(15, ChronoUnit.HOURS), superLuxury);
         //every time we add a schedule record, it populates ScheduledSeat table m2m
         List<ScheduledSeat> superLuxurySchedule2PuneToHydSeats = new ArrayList<>();
@@ -150,7 +150,7 @@ public class TestData implements Ids {
 
         superLuxury.addSchedule(superLuxuryPuneToHydSchedule2);
         //deluxe
-        Schedule deluxeHydToPuneSchedule1 = new Schedule(deluxeHydToPuneScheduleId1, localDate.plus(1, ChronoUnit.DAYS),
+        Schedule deluxeHydToPuneSchedule1 = new Schedule(Ids.deluxeHydToPuneScheduleId1, localDate.plus(1, ChronoUnit.DAYS),
                 hyderabad, pune, localTime.plus(5, ChronoUnit.HOURS), deluxe);
         //every time we add a schedule record, it populates ScheduledSeat table m2m
         List<ScheduledSeat> deluxeSchedule1HydToPuneSeats = new ArrayList<>();
@@ -170,7 +170,7 @@ public class TestData implements Ids {
 
         deluxe.addSchedule(deluxeHydToPuneSchedule1);
 
-        Schedule deluxePuneToHydSchedule2 = new Schedule(deluxePuneToHydScheduleId2, localDate.plus(1, ChronoUnit.DAYS),
+        Schedule deluxePuneToHydSchedule2 = new Schedule(Ids.deluxePuneToHydScheduleId2, localDate.plus(1, ChronoUnit.DAYS),
                 pune, hyderabad, localTime.plus(20, ChronoUnit.HOURS), deluxe);
         //every time we add a schedule record, it populates ScheduledSeat table m2m
         List<ScheduledSeat> deluxeSchedule2PuneToHydSeats = new ArrayList<>();

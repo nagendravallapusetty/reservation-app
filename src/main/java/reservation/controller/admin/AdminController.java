@@ -4,14 +4,16 @@ import reservation.model.bus.Bus;
 import reservation.model.location.Location;
 import reservation.model.schedule.Schedule;
 import reservation.model.seat.Seat;
+import reservation.service.admin.Admin;
 import reservation.service.admin.AdminService;
 import reservation.service.customer.CustomerService;
 
 import java.util.List;
 
 public class AdminController {
+
     private volatile static AdminController adminController;
-    private final AdminService adminService;
+    private final Admin adminService;
 
     private AdminController() {
         adminService = AdminService.getInstance();

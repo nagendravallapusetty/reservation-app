@@ -5,6 +5,7 @@ import reservation.model.location.Location;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Schedule {
@@ -25,6 +26,8 @@ public class Schedule {
 
     private List<ScheduledSeat> reservedSeats;
 
+    private List<ScheduledSeat> cancelledSeats;
+
 
     public Schedule(String scheduleId, LocalDate date, Location fromLocation, Location toLocation, LocalTime departureTime, Bus bus) {
         this.scheduleId = scheduleId;
@@ -33,6 +36,7 @@ public class Schedule {
         this.toLocation = toLocation;
         this.departureTime = departureTime;
         this.bus = bus;
+        cancelledSeats = new ArrayList<>();
     }
 
     public LocalTime getArrivalTime() {
@@ -73,6 +77,14 @@ public class Schedule {
 
     public void setReservedSeats(List<ScheduledSeat> reservedSeats) {
         this.reservedSeats = reservedSeats;
+    }
+
+    public void addReservedSeat(ScheduledSeat scheduledSeat) {
+        this.reservedSeats.add(scheduledSeat);
+    }
+
+    public void addCancelledSeat(ScheduledSeat scheduledSeat) {
+        this.cancelledSeats.add(scheduledSeat);
     }
 
     public String toString() {

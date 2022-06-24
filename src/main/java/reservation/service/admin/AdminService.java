@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AdminService {
+public class AdminService implements Admin {
 
     private volatile static AdminService adminService;
 

@@ -4,6 +4,7 @@ import reservation.model.location.Location;
 import reservation.model.schedule.Schedule;
 import reservation.model.schedule.ScheduledSeat;
 import reservation.model.seat.status.SeatAvailable;
+import reservation.model.seat.status.SeatCancelled;
 import reservation.model.ticket.Ticket;
 import reservation.model.ticket.status.TicketCancelled;
 import reservation.model.user.User;
@@ -19,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class CustomerService {
+public class CustomerService implements Customer {
 
     private volatile static CustomerService customerService;
     private TicketHandler ticketHandler;
@@ -45,9 +46,18 @@ public class CustomerService {
         if (ticket == null)
             throw new TicketNotFoundException("Invalid ticket number entered");
 
-        ticket.setTicketStatus(new TicketCancelled());
-        ticket.getScheduledSeat().setStatus(new SeatAvailable());
+        ticket.setTicketStatus(ticket.getTicketStatus().getFailureState());
+        cancelScheduledSeat(ticket);
         return ticket;
+    }
+
+    private boolean cancelScheduledSeat(Ticket ticket) {
+        Schedule schedule = ticket.getSchedule();
+        ScheduledSeat existingScheduledSeat = ticket.getScheduledSeat();
+        ScheduledSeat newScheduledSeat = new ScheduledSeat(existingScheduledSeat.getSeat(), new SeatCancelled(), existingScheduledSeat.getFare());
+        schedule.addCancelledSeat(newScheduledSeat);
+        existingScheduledSeat.setStatus(new SeatAvailable());
+        return true;
     }
 
     public Ticket trackTicket(String ticketNumber) {
@@ -86,7 +96,6 @@ public class CustomerService {
     public List<Schedule> getBuses(Optional<Location> fromLoc, Optional<Location> toLoc, LocalDate date) {
 
         List<Schedule> schedules = TestData.getAllSchedules();
-        //List<Schedule> scheduleList = new ArrayList<>(schedules.values());
 
         List<Schedule> filteredSchedules = schedules.stream().filter((schedule) ->
                 schedule.getFromLocation().getLocationId().equals(fromLoc.get().getLocationId())
